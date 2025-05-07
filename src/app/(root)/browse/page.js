@@ -46,44 +46,44 @@ export default function Home() {
   };
 
   return (
-    <div className="p-6 mx-auto h-full" data-testid="chatbot-container">
+    <div className="p-6 mx-auto h-full" id="chatbot-container">
       <div
         ref={chatContainerRef}
         className="h-96 overflow-y-scroll border rounded p-4 mb-4 space-y-2 bg-gray-900 text-white"
-        data-testid="chat-messages"
+        id="chat-messages"
       >
         {messages.map((msg, i) => (
           <div
             key={i}
             className={msg.role === 'user' ? 'text-right' : 'text-left'}
-            data-testid={`message-${msg.role}`}
+            id={`message-${msg.role}`}
           >
             <p
               className={`inline-block px-3 py-2 rounded-lg ${msg.role === 'user' ? 'bg-gray-800' : 'bg-gray-800'}`}
-              data-testid={`message-content-${msg.role}`}
+              id={`message-content-${msg.role}`}
             >
               {msg.role === 'assistant' ? filterThink(msg.content) : msg.content}
             </p>
           </div>
         ))}
         {isThinking && (
-          <div className="text-left italic text-gray-500" data-testid="thinking-indicator">
+          <div className="text-left italic text-gray-500" id="thinking-indicator">
             Thinking...
           </div>
         )}
       </div>
-      <div className="flex gap-2" data-testid="input-section">
+      <div className="flex gap-2" id="input-section">
         <input
           className="flex-1 p-2 border rounded"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-          data-testid="chat-input"
+          id="chat-input"
         />
         <button
           className="px-4 py-2 bg-blue-600 text-white rounded"
           onClick={sendMessage}
-          data-testid="send-button"
+          id="send-button"
         >
           Send
         </button>
